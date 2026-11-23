@@ -1,0 +1,128 @@
+spring:
+  datasource:
+    url: jdbc:tc:pgvector:pg16:///careerdb
+    username: test
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+generator:
+  person-count: 500
+  company-count: 50
+  random-seed: 999
+  simulation-start: 2015-01-01
+  observation-end: 2026-10-31
+
+  archetypes:
+    annual-attrition:
+      IT_SERVICES: 0.14
+      CONSULTING: 0.16
+      PRODUCT: 0.22
+      FINTECH: 0.22
+      ECOMMERCE: 0.22
+      FOOD_DELIVERY: 0.22
+      HARDWARE: 0.15
+    distribution:
+      IT_SERVICES: 0.25
+      CONSULTING: 0.15
+      PRODUCT: 0.20
+      FINTECH: 0.15
+      ECOMMERCE: 0.10
+      FOOD_DELIVERY: 0.10
+      HARDWARE: 0.05
+    name-prefixes:
+      IT_SERVICES: "Meridian"
+      CONSULTING: "Halden"
+      PRODUCT: "Orbis"
+      FINTECH: "PayVeda"
+      ECOMMERCE: "BazaarHive"
+      FOOD_DELIVERY: "QuickNest"
+      HARDWARE: "Aranya"
+
+  attrition:
+    junior-multiplier: 1.3
+    mid-multiplier: 1.0
+    senior-multiplier: 0.6
+    exodus-multiplier: 5.0
+    market-spike:
+      from-year: 2021
+      to-year: 2023
+      multiplier: 1.5
+
+  promotion:
+    years-to-next-level:
+      1: 2.0
+      2: 3.0
+      3: 4.0
+      4: 5.0
+    fast-multiplier: 0.7
+    slow-multiplier: 1.4
+
+  job-change:
+    boomerang-baseline: 0.05
+    boomerang-high: 0.20
+    min-gap-months: 0
+    max-gap-months: 3
+    talent-flow-boost: 4.0
+    hiring-boom-boost: 3.0
+    leave-dataset-probability: 0.15
+    min-return-months: 6
+    return-same-level-prob: 0.8
+    return-level-up-prob: 0.2
+
+  noise:
+    alias-rate: 0.30
+    typo-rate: 0.10
+    known-variants:
+      IT_SERVICES:
+        - "Meridian Infotech Pvt Ltd"
+        - "Meridian IT"
+    heldout-variants:
+      IT_SERVICES:
+        - "Meridian Info"
+        - "Infotech Meridian"
+
+  patterns:
+    exodus-company-name: "Aranya Technologies"
+    exodus-quarter: 3
+    exodus-year: 2022
+    boom-company-name: "QuickNest"
+    boom-year: 2023
+    high-boomerang-company-name: "PayVeda"
+    fast-promotion-company-name: "Halden Global Consulting"
+    slow-promotion-company-name: "Meridian Infotech"
+    talent-flow-from: "Tiffin Dash"
+    talent-flow-to: "Zipbasket"
+
+  cohort:
+    month-weights:
+      1: 0.08
+      2: 0.04
+      3: 0.04
+      4: 0.04
+      5: 0.06
+      6: 0.18
+      7: 0.18
+      8: 0.14
+      9: 0.08
+      10: 0.06
+      11: 0.06
+      12: 0.04
+    experienced-monthly-rate: 0.02
+
+  growth:
+    ranges:
+      IT_SERVICES: { min: -0.03, max: 0.08 }
+      CONSULTING:  { min: -0.03, max: 0.10 }
+      PRODUCT:     { min: -0.05, max: 0.25 }
+      FINTECH:     { min: -0.05, max: 0.25 }
+      ECOMMERCE:   { min: -0.05, max: 0.25 }
+      FOOD_DELIVERY: { min: -0.10, max: 0.30 }
+      HARDWARE:    { min: -0.05, max: 0.05 }
+
+  person-budget:
+    fresher-share: 0.60
+    lateral-share: 0.40

@@ -1,0 +1,1 @@
+ALTER TABLE synthetic_truth ADD COLUMN noise_type VARCHAR(20);
